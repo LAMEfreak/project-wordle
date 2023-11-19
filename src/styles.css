@@ -156,9 +156,13 @@ h1 {
   width: 100%;
   font-size: 2rem;
   border: 2px solid var(--color-gray-300);
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 8px 16px;
-  outline-offset: 4px;
+  outline: none;
+}
+
+.guess-input-wrapper #guess-input:focus {
+  border-color: #162fc1;  
 }
 
 .banner {
