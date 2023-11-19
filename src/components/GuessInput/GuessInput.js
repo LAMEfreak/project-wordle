@@ -1,13 +1,13 @@
 import React from "react";
 
-function GuessInput() {
-  // Set up state for user's guess
+function GuessInput({ handleSubmitGuesses }) {
+  // Set up state for user's guess.
   const [guess, setGuess] = React.useState("");
 
-  // Function linked to event handler in Form tag => (1) Stop default behavior of page refreshing when form is submitted, (2) reset guess in input field when form is submitted
-
+  // Function linked to event handler in Form tag => (1) Stop default behavior of page refreshing when form is submitted (2)) Call handleSubmitGuesses function with user's current guess as input => this updates the list of user guesses in the Game component (3) reset guess in input field when form is submitted
   function handleSubmit(e) {
     e.preventDefault();
+    handleSubmitGuesses(guess);
     console.log({ guess });
     setGuess("");
   }
@@ -22,16 +22,15 @@ function GuessInput() {
           id="guess-input"
           // value attribute makes it a controlled input, that is, managed by React
           value={guess}
-          // onChange attribute: Updates 'guess' state with current input field value (uppercase) and rerender
+          // onChange attribute: Updates 'guess' state with current input field value (uppercase)
           onChange={(e) => {
-            const nextGuess = e.target.value.toUpperCase();
-            setGuess(nextGuess);
+            setGuess(e.target.value.toUpperCase());
           }}
           // Use regex to accept only A-Z (5 characters only), otherwise show error message
           pattern="[A-Z]{5}"
           title="Enter a 5-letter word"
           // Use required attribute to invalidate empty strings
-          required="true"
+          required={true}
         />
       </form>
     </>
