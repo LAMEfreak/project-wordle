@@ -4,7 +4,7 @@ function GuessInput({ handleSubmitGuesses }) {
   // Set up state for user's guess.
   const [guess, setGuess] = React.useState("");
 
-  // Function linked to event handler in Form tag => (1) Stop default behavior of page refreshing when form is submitted (2)) Call handleSubmitGuesses function with user's current gues s as input => this updates the list of user guesses in the Game component (3) reset guess in input field when form is submitted
+  // Function linked to event handler in Form tag => (1) Stop default behavior of page refreshing when form is submitted (2)) Call handleSubmitGuesses function with user's current guess as input => this updates the list of user guesses in the Game component (3) reset guess in input field when form is submitted
   function handleSubmit(e) {
     e.preventDefault();
     handleSubmitGuesses(guess);

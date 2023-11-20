@@ -1,18 +1,21 @@
-// import React from "react";
-// import { range } from "../../utils";
+import React from "react";
+import { range } from "../../utils";
 
-// function Guess({ value }) {
-//   // Use range utility to generate array of 6 elements, and map over array to construct 5x6 grid
-//   return (
-//     <p className="guess">
-//       <span>{value}</span>
-//       {/* <span className="cell">H</span>
-//       <span className="cell">E</span>
-//       <span className="cell">L</span>
-//       <span className="cell">L</span>
-//       <span className="cell">O</span> */}
-//     </p>
-//   );
-// }
+function Guess({ value }) {
+  // We use range(5) because it's an inherent assumption that we are ONLY working with words comprising 5 letters.
 
-// export default Guess;
+  // Map over array of 5 elements and generate a span element for each letter. Ternary operator: If there is a word, pass the value of each of the characters dynamically. Otherwise, it is undefined (no character is shown and the cell is empty).
+  return (
+    <p className="guess">
+      {range(5).map((index) => {
+        return (
+          <span className="cell" key={index}>
+            {value ? value[index] : undefined}
+          </span>
+        );
+      })}
+    </p>
+  );
+}
+
+export default Guess;
