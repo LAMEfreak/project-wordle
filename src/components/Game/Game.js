@@ -11,22 +11,17 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  // Set up new state for a list that contains all the guesses (set up at Game component level so we can pass this as props into the GuessResult component to be rendered) 🌟 GuessResult component doesn't need to be able to set the list of guesses, it only needs to read and render them. Therefore, we only pass the list state as props into the GuessResult component (without the setList function)
-  const [list, setList] = React.useState([]);
+  // Set up new state for a list of guesses that contains all the guesses (set up at Game component level so we can pass this as props into the GuessResult component to be rendered) 🌟 GuessResult component doesn't need to be able to set the list of guesses, it only needs to read and render them. Therefore, we only pass the list state as props into the GuessResult component (without the setGuesses function)
+  const [guesses, setGuesses] = React.useState([]);
 
   function handleSubmitGuesses(guess) {
-    // Create guessWithID Object and append a unique ID for the key prop in addition to the user's guess. Set a list of user guesses by using spread operator [...currentlist, newItem] to the list state
-    const guessWithID = {
-      id: crypto.randomUUID(),
-      value: guess,
-    };
-    const nextList = [...list, guessWithID];
-    setList(nextList);
-    console.log(nextList);
+    // Set a list of user guesses by using spread operator [...currentlist, newGuess] to the list state
+    const nextGuesses = [...guesses, guess];
+    setGuesses(nextGuesses);
   }
   return (
     <>
-      <GuessResult list={list} />
+      <GuessResult guesses={guesses} />
       <GuessInput handleSubmitGuesses={handleSubmitGuesses} />
     </>
   );

@@ -1,13 +1,13 @@
 import React from "react";
 
-function GuessResult({ list }) {
+function GuessResult({ guesses }) {
   return (
     <div className="guess-results">
-      {/* Map over the list of guess Objects and return one pargraph item for each Object, extracting its value and setting the unique id as the key */}
-      {list.map((item) => {
+      {/* Map over guess items and return one pargraph item for each Object, extracting its value and setting the unique id as the key */}
+      {guesses.map((guess, index) => {
         return (
-          <p className="guess" key={item.id}>
-            {item.value}
+          <p key={index} className="guess">
+            {guess}
           </p>
         );
       })}
