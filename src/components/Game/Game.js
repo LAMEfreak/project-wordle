@@ -21,7 +21,8 @@ function Game() {
   }
   return (
     <>
-      <GuessResult guesses={guesses} />
+      {/* Pass randomly generated answer as props all the way to Guess component where we invoke the checkGuess function */}
+      <GuessResult guesses={guesses} answer={answer} />
       <GuessInput handleSubmitGuesses={handleSubmitGuesses} />
     </>
   );
