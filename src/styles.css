@@ -244,6 +244,24 @@ h1 {
   color: white;
   transition: all 0.2s ease-in-out;
 }
+
+.streak {
+  text-align: center;
+  font-size: 24px;
+}
+
+.span-positive {
+  font-size: 48px;
+  font-weight: 600;
+  color: #162fc1;
+}
+
+.span-empty {
+  font-size: 48px;
+  font-weight: 600;
+  color: #a1a1a1;
+}
+
 /*
   Keyframe animations
 */

@@ -27,6 +27,9 @@ function Game() {
 
   console.info({ correctAnswer });
 
+  // State to store no. of consecutive wins
+  const [consecutiveWins, SetConsecutiveWins] = React.useState(0);
+
   function handleSubmitGuesses(guess) {
     // Set a list of user guesses by using spread operator [...currentlist, newGuess] to the list state
     const nextGuesses = [...guesses, guess];
@@ -35,13 +38,21 @@ function Game() {
     // Check game status which ends the game if winning or losing condition is met, and pass status it into GuessInput to render dynamically.
     if (guess === correctAnswer) {
       setStatus("win");
+      SetConsecutiveWins(consecutiveWins + 1);
     } else if (nextGuesses.length >= NUM_OF_GUESSES_ALLOWED) {
       setStatus("lose");
+      SetConsecutiveWins(0);
     }
   }
 
   return (
     <>
+      <div className="streak">
+        <p>Current Streak:</p>
+        <span className={`span-${consecutiveWins === 0 ? "empty" : "positive"}`}>
+          {consecutiveWins}
+        </span>
+      </div>
       {/* Pass randomly generated answer as props all the way to Guess component where we invoke the checkGuess function */}
       <GuessResult guesses={guesses} answer={correctAnswer} />
       <GuessInput handleSubmitGuesses={handleSubmitGuesses} status={status} />
