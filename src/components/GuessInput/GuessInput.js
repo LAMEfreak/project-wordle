@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput({ handleSubmitGuesses }) {
+function GuessInput({ handleSubmitGuesses, status }) {
   // Set up state for user's guess.
   const [guess, setGuess] = React.useState("");
 
@@ -18,6 +18,8 @@ function GuessInput({ handleSubmitGuesses }) {
       <form className="guess-input-wrapper" onSubmit={handleSubmit}>
         <label htmlFor="guess-input">Enter guess:</label>
         <input
+          // Disable input if game is no longer running
+          disabled={status !== "running"}
           type="text"
           id="guess-input"
           // value attribute makes it a controlled input, that is, managed by React
