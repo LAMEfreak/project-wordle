@@ -8,7 +8,6 @@ function GuessInput({ handleSubmitGuesses, status }) {
   function handleSubmit(e) {
     e.preventDefault();
     handleSubmitGuesses(guess);
-    console.log({ guess });
     setGuess("");
   }
 
