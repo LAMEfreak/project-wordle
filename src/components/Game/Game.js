@@ -7,6 +7,8 @@ import GuessResult from "../GuessResult/GuessResult";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import ShowBanner from "../ShowBanner/ShowBanner";
 
+// Test comment
+
 // Pick a random word on every pageload.
 // const answer = sample(WORDS);
 
